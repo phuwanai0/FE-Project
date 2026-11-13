@@ -77,9 +77,11 @@ export const login = async (email, password) => {
 
   const token = data?.token || data?.access_token;
 
-  if (token) {
-    saveToken(token);
+  if (!token) {
+    throw new Error("ไม่พบ Token จาก Backend");
   }
+
+  saveToken(token);
 
   return data;
 };
@@ -99,15 +101,25 @@ export const logout = () => {
   localStorage.removeItem("user");
 };
 
-// เปลี่ยนรหัสผ่านของสมาชิกที่เข้าสู่ระบบอยู่
-export const changeMyPassword = (currentPassword, newPassword) =>
-  apiFetch("/api/auth/change-password", {
+// ===============================
+// MEMBER CHANGE PASSWORD
+// ===============================
+
+export const changeMyPassword = (currentPassword, newPassword) => {
+  const token = getToken();
+
+  if (!token) {
+    throw new Error("ไม่พบ Token กรุณาเข้าสู่ระบบใหม่");
+  }
+
+  return apiFetch("/api/change-password", {
     method: "PUT",
     body: JSON.stringify({
       current_password: currentPassword,
       new_password: newPassword,
     }),
   });
+};
 
 // ===============================
 // PRODUCT API
@@ -209,14 +221,12 @@ export const getMyOrders = () =>
 export const getUsers = () =>
   apiFetch("/api/admin/users");
 
-// Admin เปลี่ยนรหัสผ่านสมาชิก
 export const updateUserPassword = (id, password) =>
   apiFetch(`/api/admin/users/${id}/password`, {
     method: "PUT",
     body: JSON.stringify({ password }),
   });
 
-// Admin ลบสมาชิก
 export const deleteUser = (id) =>
   apiFetch(`/api/admin/users/${id}`, {
     method: "DELETE",
