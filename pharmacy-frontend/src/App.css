@@ -1,0 +1,11 @@
+.app-sidebar {
+  width: 240px;
+  flex: 0 0 240px;
+}
+
+@media (max-width: 640px) {
+  .app-sidebar {
+    width: 72px;
+    flex-basis: 72px;
+  }
+}

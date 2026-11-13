@@ -1,0 +1,319 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Kanit', sans-serif;
+  background: #f5f9f6;
+  color: #183b32;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* NAVBAR */
+.pharmacy-navbar {
+  height: 76px;
+  background: white;
+  border-bottom: 1px solid #e6eee9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.pharmacy-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #087653;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: #087653;
+  color: white;
+  border-radius: 12px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-button {
+  border: 0;
+  background: transparent;
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: #52665e;
+}
+
+.nav-button.active,
+.nav-button:hover {
+  background: #e8f6ef;
+  color: #087653;
+}
+
+/* SHOP */
+.shop-container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 35px 24px 70px;
+}
+
+/* HERO */
+.shop-hero {
+  background: linear-gradient(120deg, #087653, #19a875);
+  color: white;
+  padding: 45px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.shop-hero h1 {
+  font-size: clamp(28px, 5vw, 45px);
+  margin: 0 0 10px;
+}
+
+.shop-hero p {
+  color: #e0f6eb;
+  margin-bottom: 22px;
+}
+
+.hero-symbol {
+  font-size: 100px;
+}
+
+.shop-search {
+  width: 100%;
+  max-width: 520px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  color: #183b32;
+}
+
+/* SECTION */
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 35px 0 18px;
+  gap: 12px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* CATEGORY */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-btn {
+  background: white;
+  border: 1px solid #dce9e0;
+  padding: 9px 18px;
+  border-radius: 20px;
+  color: #52665e;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  background: #087653;
+  border-color: #087653;
+  color: white;
+}
+
+/* GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* CARD */
+.product-card {
+  background: white;
+  border: 1px solid #e5eee8;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-shadow: 0 4px 15px rgba(0, 80, 50, .06);
+  transition: .25s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 80, 50, .13);
+}
+
+/* IMAGE */
+.product-visual {
+  height: 180px;
+  width: 100%;
+  background: linear-gradient(145deg, #e8f7ef, #f5fbf7);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+}
+
+/* INFO */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-card h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+  color: #24483c;
+}
+
+.product-description {
+  font-size: 13px;
+  color: #82928a;
+  line-height: 1.6;
+  min-height: 42px;
+  margin: 0;
+}
+
+.product-price {
+  color: #07835b;
+  font-size: 23px;
+  font-weight: 700;
+  margin: 12px 0 8px;
+}
+
+.product-stock {
+  color: #72847a;
+  font-size: 12px;
+  margin: 0 0 14px;
+}
+
+.product-add {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #087653;
+  color: white;
+  font-weight: 600;
+}
+
+.product-add:hover {
+  background: #066346;
+}
+
+.product-add:disabled {
+  background: #cbd5cf;
+  cursor: not-allowed;
+}
+
+/* EMPTY */
+.empty-state {
+  background: white;
+  border: 1px dashed #cbdcd1;
+  border-radius: 18px;
+  padding: 45px 20px;
+  text-align: center;
+  color: #75877d;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* MOBILE */
+@media (max-width: 650px) {
+  .pharmacy-navbar {
+    height: auto;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-links {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .shop-container {
+    padding: 20px 14px 45px;
+  }
+
+  .shop-hero {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .hero-symbol {
+    display: none;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-card {
+    padding: 11px;
+  }
+
+  .product-visual {
+    height: 120px;
+  }
+
+  .product-card h3 {
+    font-size: 15px;
+  }
+
+  .product-price {
+    font-size: 19px;
+  }
+}
